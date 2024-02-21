@@ -1,0 +1,11 @@
+<mvc:View controllerName="numenit.com.hack2buildgenai.controller.List"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m" displayBlock="true">
+    <Page id="page" title="{i18n>title}">
+        <List id="mainList" items="{ path: 'newsModel>/news' }" headerText="News" growing="true" growingThreshold="4" growingScrollToLoad="false" showSeparators="Inner">
+            <StandardListItem id="stdLitem" title="{newsModel>title}" description="{newsModel>url}" icon="sap-icon://newspaper" iconDensityAware="false" iconInset="true" info="{newsModel>author}" infoState="Information"/>
+        </List>
+    </Page>
+</mvc:View>
