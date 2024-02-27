@@ -120,6 +120,13 @@
           "target": [
             "TargetList"
           ]
+        },
+        {
+          "name": "RouteNewsDetail",
+          "pattern": "NewsDetail/id={NewsId}",
+          "target": [
+            "TargetNewsDetail"
+          ]
         }
       ],
       "targets": {
@@ -136,6 +143,13 @@
           "viewId": "List",
           "viewName": "List",
           "viewLevel": 2
+        },
+        "TargetNewsDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "NewsDetail",
+          "viewName": "NewsDetail",
+          "viewLevel": 3
         },
         "NotFound": {
           "viewType": "XML",

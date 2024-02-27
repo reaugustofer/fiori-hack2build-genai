@@ -14,7 +14,7 @@
             <OverflowToolbar id="otbFooter">
                 <ToolbarSpacer id="tbs1"/>
                 <Button id="btnSearch" type="Emphasized" text="Search" press=".onNavToNewsList"/>
-                <Button id="btnNotFound" type="Emphasized" text="Display Not Found" press=".onNavToNotFound"/>
+                <!-- <Button id="btnNotFound" type="Emphasized" text="Display Not Found" press=".onNavToNotFound"/> -->
             </OverflowToolbar>
         </footer>
     </Page>

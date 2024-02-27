@@ -9,12 +9,12 @@ sap.ui.define([
     function (Controller, JSONModel, BaseController) {
         "use strict";
 
-        return BaseController.extend("numenit.com.hack2buildgenai.controller.List", {
+        return BaseController.extend("numenit.com.hack2buildgenai.controller.NewsDetail", {
 
             onInit: function () {
                 var oRouter = this.getRouter();
 
-                oRouter.getRoute("RouteList").attachMatched(this._onRouteMatched, this);
+                oRouter.getRoute("RouteNewsDetail").attachMatched(this._onRouteMatched, this);
             },
 
             _onRouteMatched: function (oEvent) {
@@ -24,7 +24,7 @@ sap.ui.define([
                 oView = this.getView();
 
                 oView.bindElement({
-                    path: "/NewsList(" + "RawMaterial=" + oArgs.RawMaterial + "&" + "Region=" + oArgs.Region + ")",
+                    path: "/NewsDetail(" + "id=" + oArgs.NewsId + ")",
                     events: {
                         change: this._onBindingChange.bind(this),
                         dataRequested: function (oEvent) {
@@ -42,26 +42,6 @@ sap.ui.define([
                 if (!this.getView().getBindingContext()) {
                     this.getRouter().getTargets().display("NotFound");
                 }
-            },
-
-            onTableUpdStart: function (oEvent) {
-                oEvent.getSource().setBusy(true);
-            },
-
-            onTableUpdFinished: function (oEvent) {
-                oEvent.getSource().setBusy(false);
-            },
-
-            onListItemPress: function (oEvent) {
-                var oItem = oEvent.getParameter("listItem") || oEvent.getSource();
-                var oCtx = oItem.getBindingContext("newsModel");
-                var oEntry = oCtx.getObject();
-
-                alert("List item pressed: News Id: " + oEntry.id);
-
-                this.getRouter().navTo("RouteNewsDetail", {
-                    NewsId: oEntry.id
-                });
             }
 
         });

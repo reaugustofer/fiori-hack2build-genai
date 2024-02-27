@@ -1,11 +1,44 @@
-<mvc:View controllerName="numenit.com.hack2buildgenai.controller.List"
+<mvc:View xmlns:table="sap.ui.table" controllerName="numenit.com.hack2buildgenai.controller.List"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core"
     xmlns="sap.m" displayBlock="true">
     <Page id="page" title="{i18n>title}">
-        <List id="mainList" items="{ path: 'newsModel>/news' }" headerText="News" growing="true" growingThreshold="4" growingScrollToLoad="false" showSeparators="Inner">
+        <content>
+            <Table id="idMainTable" mode="None" sticky="HeaderToolbar,ColumnHeaders" inset="false" items="{newsModel>/news}" class="sapFDynamicPageAlignContent" width="auto" enableBusyIndicator="true" busyIndicatorDelay="0" updateStarted=".onTableUpdStart" updateFinished=".onTableUpdFinished">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="News" level="H2"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="25em">
+                        <Text text="Title" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Url" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+                        <Text text="Author" />
+                    </Column>
+                    <Column>
+                        <Text text="Date" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation" press=".onListItemPress">
+                        <cells>
+                            <ObjectIdentifier title="{newsModel>title}" text="Id: {newsModel>id}"/>
+                            <Text text="{newsModel>url}" />
+                            <Text text="{newsModel>author}" />
+                            <Text text="{newsModel>publish_date}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <!--    <List id="mainList" items="{ path: 'newsModel>/news' }" headerText="News" growing="true" growingThreshold="4" growingScrollToLoad="false" showSeparators="Inner">
             <StandardListItem id="stdLitem" title="{newsModel>title}" description="{newsModel>url}" icon="sap-icon://newspaper" iconDensityAware="false" iconInset="true" info="{newsModel>author}" infoState="Information"/>
-        </List>
+        </List> -->
+        </content>
     </Page>
 </mvc:View>

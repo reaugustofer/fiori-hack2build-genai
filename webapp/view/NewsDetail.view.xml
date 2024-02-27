@@ -1,0 +1,23 @@
+<mvc:View controllerName="numenit.com.hack2buildgenai.controller.NewsDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:m="sap.m"
+    xmlns="sap.uxap" height="100%">
+    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageHeader objectTitle="News Detail">
+            </ObjectPageHeader>
+        </headerTitle>
+        <headerContent>
+            <m:ObjectAttribute title="" text="This example explains the rules for the rendering of sections"/> 
+        </headerContent>
+        <sections>
+            <ObjectPageSection titleUppercase="false" title="Basic Information">
+                <subSections>
+                    <!-- <blocks>
+                    </blocks> -->
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>
