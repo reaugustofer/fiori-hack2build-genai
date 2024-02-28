@@ -12,13 +12,13 @@ sap.ui.define([
         return BaseController.extend("numenit.com.hack2buildgenai.controller.List", {
 
             onInit: function () {
-                var oRouter = this.getRouter();
+                let oRouter = this.getRouter();
 
                 oRouter.getRoute("RouteList").attachMatched(this._onRouteMatched, this);
             },
 
             _onRouteMatched: function (oEvent) {
-                var oArgs, oView;
+                let oArgs, oView;
 
                 oArgs = oEvent.getParameter("arguments");
                 oView = this.getView();
@@ -53,11 +53,12 @@ sap.ui.define([
             },
 
             onListItemPress: function (oEvent) {
-                var oItem = oEvent.getParameter("listItem") || oEvent.getSource();
-                var oCtx = oItem.getBindingContext("newsModel");
-                var oEntry = oCtx.getObject();
+                let oItem = oEvent.getParameter("listItem") || oEvent.getSource();
+                let oCtx = oItem.getBindingContext("newsModel");
+                let oEntry = oCtx.getObject();
+                let detailModel = this.getView().getModel("newsDetailModel");
 
-                alert("List item pressed: News Id: " + oEntry.id);
+                detailModel.setData(oEntry);
 
                 this.getRouter().navTo("RouteNewsDetail", {
                     NewsId: oEntry.id

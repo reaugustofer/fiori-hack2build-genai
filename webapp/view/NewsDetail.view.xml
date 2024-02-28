@@ -1,23 +1,88 @@
 <mvc:View controllerName="numenit.com.hack2buildgenai.controller.NewsDetail"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns:layout="sap.ui.layout"
+    xmlns="sap.uxap"
     xmlns:m="sap.m"
-    xmlns="sap.uxap" height="100%">
-    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc">
+    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
         <headerTitle>
-            <ObjectPageHeader objectTitle="News Detail">
-            </ObjectPageHeader>
+            <ObjectPageDynamicHeaderTitle id="objPageDynId">
+                <expandedHeading>
+                    <m:Title id="pageTitleId" text="{newsDetailModel>/title}" wrapping="true" class="sapUiSmallMarginEnd"/>
+                </expandedHeading>
+                <actions>
+                    <m:ToggleButton id="btnIncident" text="Report an incident" type="Emphasized"/>
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
         </headerTitle>
+
         <headerContent>
-            <m:ObjectAttribute title="" text="This example explains the rules for the rendering of sections"/> 
+            <m:FlexBox id="fBoxId" wrap="Wrap" fitContainer="true" alignItems="Stretch">
+                <f:Avatar id="avatar" src="{newsDetailModel>/image}" displaySize="S" displayShape="Circle" class="sapUiTinyMarginEnd">
+                </f:Avatar>
+                <m:VBox id="vCtry" justifyContent="Center" class="sapUiSmallMarginEnd">
+                    <m:Label id="lblCountry" text="Country"/>
+                    <m:Text id="txtCountry" text="{newsDetailModel>/source_country}"/>
+                </m:VBox>
+                <m:VBox id="vLang" justifyContent="Center" class="sapUiSmallMarginEnd">
+                    <m:Label id="lblLang" text="Language"/>
+                    <m:Text id="txtLang" text="{newsDetailModel>/language}"/>
+                </m:VBox>
+            </m:FlexBox>
+            <!-- <m:ObjectAttribute text="Details about news id: {newsDetailModel>/id}"></m:ObjectAttribute> -->
         </headerContent>
+
         <sections>
-            <ObjectPageSection titleUppercase="false" title="Basic Information">
+            <ObjectPageSection title="Basic Information" titleUppercase="false">
                 <subSections>
-                    <!-- <blocks>
-                    </blocks> -->
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <form:SimpleForm maxContainerCols="2" editable="false" layout="ColumnLayout" labelSpanL="10" labelSpanM="10" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+                                <form:content>
+                                    <m:Label text="Id"/>
+                                    <m:Text text="{newsDetailModel>/id}"/>
+                                    <m:Label text="Title"/>
+                                    <m:Text text="{newsDetailModel>/title}"/>
+                                    <m:Label text="Publish date"/>
+                                    <m:Text text="{newsDetailModel>/publish_date}"/>
+                                    <m:Label text="URL to news"/>
+                                    <m:Text text="{newsDetailModel>/url}"/>
+                                    <m:Label text="Author"/>
+                                    <m:Text text="{newsDetailModel>/author}"/>
+                                    <m:Label text="Language"/>
+                                    <m:Text text="{newsDetailModel>/language}"/>
+                                    <m:Label text="Country/Location"/>
+                                    <m:Text text="{newsDetailModel>/source_country}" />
+                                    <m:Label text="News full text"/>
+                                    <m:TextArea growing="true" value="{newsDetailModel>/text}"></m:TextArea>
+                                </form:content>
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection title="Impacts and Feelings" titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <m:Table id="suppliersTable" items="{path : 'products>/ProductCollectionStats/Filters/1/values'}">
+                                <m:columns>
+                                    <m:Column/>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem type="Navigation">
+                                        <m:cells>
+                                            <m:ObjectIdentifier text="{products>text}"/>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </blocks>
+                    </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
         </sections>
+
     </ObjectPageLayout>
 </mvc:View>

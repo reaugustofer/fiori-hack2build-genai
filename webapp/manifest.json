@@ -84,6 +84,9 @@
       },
       "newsModel": {
         "type": "sap.ui.model.json.JSONModel"
+      },
+      "newsDetailModel": {
+        "type": "sap.ui.model.json.JSONModel"
       }
     },
     "resources": {
